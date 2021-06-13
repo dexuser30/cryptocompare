@@ -33,7 +33,8 @@ export default {
         limit: 10,
         loaded: false,
         loading: false,
-        isCanUpdateChart: true
+        isCanUpdateChart: true,
+        isCanUpdateChartTimeout: null
     }),
     computed: {
         selectedPair() {
@@ -51,7 +52,7 @@ export default {
                 if(this.isCanUpdateChart) {
                     this.isCanUpdateChart = false
 
-                    setTimeout(() => {
+                    this.isCanUpdateChartTimeout = setTimeout(() => {
                         this.isCanUpdateChart = true
                     }, 10 * 1000)
                 }
@@ -59,6 +60,7 @@ export default {
         },
         'compareData.selectedPair': {
             handler: function () {
+                clearTimeout(this.isCanUpdateChartTimeout)
                 this.isCanUpdateChart = true
             },
         },

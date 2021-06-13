@@ -53,8 +53,13 @@ export default {
 
                     setTimeout(() => {
                         this.isCanUpdateChart = true
-                    }, 5 * 1000)
+                    }, 10 * 1000)
                 }
+            },
+        },
+        'compareData.selectedPair': {
+            handler: function () {
+                this.isCanUpdateChart = true
             },
         },
     },
